@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Step Beyond – Frame Running Club</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="style.css">
+ <style>
+   
+ /* 🌟 UNIVERSAL PAGE BACKGROUND */
+body {
+  background-image: url("https://images.unsplash.com/photo-1714176966946-dacb4ef15782"); 
+  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🌟 GLASS HEADER (already applied) */
+.glass-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 0 0 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  color: #fff;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.header-text h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-text p {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* 🌟 NAVIGATION LINKS */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #ffffffcc;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* 🌟 GLASS FOOTER (already applied) */
+.glass-footer {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.125);
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 0.95rem;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🌟 MAIN CONTENT CONTAINERS (Glass effect) */
+.container, .container1 {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 16px;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover, .container1:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+}
+
+/* 🌟 TWO-PANE LAYOUTS */
+.container1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.left-pane, .right-pane {
+  flex: 1;
+  min-width: 300px;
+  padding: 10px;
+}
+
+.left-pane img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.left-pane img:hover {
+  transform: scale(1.03);
+}
+
+/* 🌟 TEXT & TITLES */
+.section-title, h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+p, li, a {
+  color: #e0e0e0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+a {
+  color: #8ab4f8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li::before {
+  content: "•";
+  color: #8ab4f8;
+  margin-right: 8px;
+}
+
+/* 🌟 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container1 {
+    flex-direction: column;
+  }
+}
+/* 🌟 Monthly Events Section */
+.glass-events {
+  text-align: center;
+}
+
+/* Fancy event list */
+.events-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.events-list li {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  color: #fff;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.events-list li span {
+  font-weight: 700;
+  color: #8ab4f8;
+  min-width: 60px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.events-list li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle glow animation for premium feel */
+.events-list li:nth-child(even) {
+  animation: fadeInUp 0.6s ease both;
+}
+.events-list li:nth-child(odd) {
+  animation: fadeInUp 0.8s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- COMBINED HEADER + NAV -->
+<header class="glass-header">
+  <div class="header-container">
+    <div class="logo-section">
+      <img src="favicon.png" alt="One Step Beyond Logo" class="logo">
+      <div class="header-text">
+        <h1>One Step Beyond</h1>
+        <p>Frame Running Club</p>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#join">Join</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- HOME SECTION -->
+  <div class="container1" id="home">
+    <h2 class="section-title">Welcome to One Step Beyond</h2>
+
+    <div class="left-pane">
+      <img src="image5.png" alt="Sample Image">
+    </div>
+
+    <div class="right-pane">
+      <p>
+        We’re a friendly and inclusive frame running club based in the UK. Whether you’re completely new to frame running or already an experienced athlete, we provide a supportive space for people of all abilities to build fitness, confidence and friendships.
+      </p>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <div class="container" id="about">
+    <h2>About Our Club</h2>
+    <div class="left-pane">
+      <img src="image2.jpeg" alt="Sample Image">
+    </div>
+    <div class="right-pane">
+      <p>
+        Our Frame Running Club is a fun and friendly place where everyone is welcome! We love helping people discover the joy of frame running — it’s all about freedom, confidence, and having a great time together. Whether you’re here to make new friends, get active, or chase your goals, we’ll be cheering you on every step of the way!
+      </p>
+    </div>
+  </div>
+
+  <!-- MISSION SECTION -->
+  <div class="container1">
+    <h2>About Our Mission</h2>
+    <div class="left-pane">
+      <img src="image13.jpeg" alt="Sample Image">
+    </div>
+    <div class="right-pane">
+      <p>
+        One Step Beyond was founded to give people with physical disabilities an opportunity to experience the freedom of movement and competition through frame running. We meet regularly for training sessions and take part in events across the UK.
+      </p>
+      <p>
+        We believe sport should be fun, inclusive and empowering. Our volunteer coaches and helpers are passionate about creating a welcoming atmosphere where everyone can achieve their personal goals.
+      </p>
+    </div>
+  </div>
+
+  <!-- JOIN SECTION -->
+  <div class="container" id="join">
+    <h2>Join Us</h2>
+    <p>We welcome children, teenagers and adults of all abilities. You don’t need any experience — just an interest in trying frame running! We have frames available for new members to try at sessions.</p>
+    <p><strong>How to Join:</strong></p>
+    <ul>
+      <li>Come along to one of our monthly sessions.</li>
+      <li>Try a frame and meet our coaches.</li>
+      <li>We’ll help you find the right frame size and get started.</li>
+    </ul>
+    <p>Contact us at <a href="mailto:one.stepbeyond@outlook.com">one.stepbeyond@outlook.com</a> to book your first session.</p>
+  </div>
+
+  <!-- THE MOUNTHLY EVENTS SECTION -->
+  <div class="container1" id="events">
+    <h2 class="section-title">Events & Competitions</h2>
+
+
+    <div class="right-pane">
+      <!-- MONTHLY EVENTS SECTION -->
+<div class="container glass-events" id="monthly-events">
+  <h2 class="section-title">Our Monthly Events</h2>
+  <ul class="events-list">
+    <li><span>JAN</span>  New Year’s Goals</li>
+    <li><span>FEB</span>  Valentines</li>
+    <li><span>MAR</span>  Easter Egg Hunt</li>
+    <li><span>APR</span>  Family Day</li>
+    <li><span>MAY</span>  Search and Rescue</li>
+    <li><span>JUN</span>  Dance Party</li>
+    <li><span>JUL</span>  Hawaiian Party</li>
+    <li><span>AUG</span>  Water Play</li>
+    <li><span>SEPT</span>  Ice Cream Day</li>
+    <li><span>OCT</span>  Trick or Treat</li>
+    <li><span>NOV</span>  Neon Party</li>
+    <li><span>DEC</span>  Santa’s Run</li>
+  </ul>
+</div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:one.stepbeyond@outlook.com"> one.stepbeyond@outlook.com </a></p>
+    <a href="https://maps.app.goo.gl/6TpCcxfm8FFedKgk7">Location: Kings Park Athletics Stadium</a>
+  </div>
+
+<!-- FOOTER -->
+<footer class="glass-footer">
+  &copy; EST.2025 One Step Beyond Bournemouth | Frame Running fun!
+</footer>
+<div class="starfall">
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+  <div class="falling-star"></div>
+</div>
+
+  
+</body>
+</html>
